@@ -28,24 +28,13 @@ public class LoginNGTest {
     public LoginNGTest() {
     }
     @BeforeClass
-    public static void startJetty() throws Exception {
-        String[] args = new String[]{
-            "jetty.home=../jetty",
-            "STOP.PORT=2021", "STOP.KEY=AutomaticTofu"
-        };
-        var LG = new StdErrLog();
-        LG.setLevel(AbstractLogger.LEVEL_OFF);
-        Log.setLog(LG);
-        org.eclipse.jetty.start.Main.main(args);
+    public static void foo(){
+        Utils.startJetty();
     }
     @AfterClass
-    public static void stopJetty() throws Exception {
-        String[] args = new String[]{ "jetty.home=../jetty",
-            "STOP.PORT=2021", "STOP.KEY=AutomaticTofu",
-            "--stop"
-        };
-        org.eclipse.jetty.start.Main.main(args);
-       }
+    public static void foo2(){
+        Utils.stopJetty();
+    }
     
     static CookieManager cookieManager = new CookieManager();
     @BeforeClass
