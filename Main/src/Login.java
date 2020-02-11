@@ -9,9 +9,9 @@ import java.util.Arrays;
 @WebServlet(urlPatterns={"/login"})
 public class Login extends HttpServlet
 {
-    ArrayList<String> usernames = new ArrayList<String>();
-    ArrayList<String> passwords = new ArrayList<String>();
-    ArrayList<String> names = new ArrayList<String>();
+    ArrayList<String> usernames = new ArrayList<>();
+    ArrayList<String> passwords = new ArrayList<>();
+    ArrayList<String> names = new ArrayList<>();
     String logged_in_user;
     
     int logged_in = 0;
