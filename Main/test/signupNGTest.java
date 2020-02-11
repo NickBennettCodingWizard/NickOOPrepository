@@ -18,14 +18,6 @@ public class signupNGTest {
     public signupNGTest() {
     }
 
-    @Test
-    public void testDoGet() throws Exception {
-        System.out.println("doGet");
-        HttpServletRequest req = null;
-        HttpServletResponse resp = null;
-        signup instance = new signup();
-        instance.doGet(req, resp);
-        fail("The test case is a prototype.");
-    }
+    
     
 }

@@ -18,14 +18,6 @@ public class Who2NGTest {
     public Who2NGTest() {
     }
 
-    @Test
-    public void testDoGet() throws Exception {
-        System.out.println("doGet");
-        HttpServletRequest req = null;
-        HttpServletResponse resp = null;
-        Who2 instance = new Who2();
-        instance.doGet(req, resp);
-        fail("The test case is a prototype.");
-    }
+    
     
 }
