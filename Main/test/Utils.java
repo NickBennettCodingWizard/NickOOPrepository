@@ -25,7 +25,7 @@ public class Utils {
     
     public static void startJetty(){
         String[] args = new String[]{
-            "jetty.home=../jetty",
+            "jetty.home=../../jetty",
             "STOP.PORT=2021", "STOP.KEY=AutomaticTofu"
         };
         var LG = new StdErrLog();
@@ -35,7 +35,7 @@ public class Utils {
     }
     
     public static void stopJetty(){
-        String[] args = new String[]{ "jetty.home=../jetty",
+        String[] args = new String[]{ "jetty.home=../../jetty",
             "STOP.PORT=2021", "STOP.KEY=AutomaticTofu",
             "--stop"
         };
