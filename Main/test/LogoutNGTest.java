@@ -18,14 +18,6 @@ public class LogoutNGTest {
     public LogoutNGTest() {
     }
 
-    @Test
-    public void testDoGet() throws Exception {
-        System.out.println("doGet");
-        HttpServletRequest req = null;
-        HttpServletResponse resp = null;
-        Logout instance = new Logout();
-        instance.doGet(req, resp);
-        fail("The test case is a prototype.");
-    }
+    
     
 }
