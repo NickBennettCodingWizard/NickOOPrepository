@@ -33,7 +33,6 @@ public class signup extends HttpServlet
             pw.printf("Your password is: " + passwords.get(num_users)+"\n");
             pw.printf("Your name is: " + names.get(num_users)+"\n");
         }
-        
         num_users++;
     }
 }

@@ -27,6 +27,10 @@ public class Login extends HttpServlet
         names = (ArrayList<String>) sess.getAttribute("names");
         logged_in_user = (String) sess.getAttribute("logged_in_user");
         
+        if (password == null || username == null) {
+            pw.printf("Missing login parameter");
+            return;
+        }
         
         if(logged_in_user != null)
         {
@@ -34,16 +38,12 @@ public class Login extends HttpServlet
         }
         else
         {
-            if( username == null ){
-                pw.printf("No username provided");
-            } else {
-                for (int i = 0; i < usernames.size(); i++) {
-                    if (usernames.get(i).equals(username) && password.equals(passwords.get(i))) {
-                        logged_in_user = username;
-                        sess.setAttribute("logged_in_user", logged_in_user);
-                        pw.printf("You are logged in ;)");
-                        return;
-                    }
+            for (int i = 0; i < usernames.size(); i++) {
+                if (usernames.get(i).equals(username) && password.equals(passwords.get(i))) {
+                    logged_in_user = username;
+                    sess.setAttribute("logged_in_user", logged_in_user);
+                    pw.printf("You are logged in");
+                    return;
                 }
             }
             pw.printf("This user is not signed up");

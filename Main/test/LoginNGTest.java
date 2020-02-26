@@ -49,15 +49,28 @@ public class LoginNGTest {
     
     @Test
     public void testLogin1() throws Exception{
-        String txt = Utils.fetch( "/srv/login?user=bob" );
-        assertTrue( txt.contains("Logged in as bob"));
+        String txt = Utils.fetch( "/srv/signup?username=bob&password=1234&name=bill" );
+        assertTrue( txt.contains("Signed up as: bob"));
+        txt = Utils.fetch( "/srv/login?username=bob&password=1234" );
+        assertTrue( txt.contains("You are logged in"));
     }
     
     @Test
-    public void testLogin2() throws Exception{
-        String txt = Utils.fetch( "/srv/login?user=jill");
-        assertFalse( txt.contains("Don't kow who you are"));
-        assertTrue( txt.contains("Logged in as jill"));
+    public void testAlreadyLoggedIn() throws Exception{
+        String txt = Utils.fetch( "/srv/signup?username=bob&password=1234&name=bill" );
+        assertTrue( txt.contains("Signed up as: bob"));
+        txt = Utils.fetch( "/srv/signup?username=ted&password=4321&name=det" );
+        assertTrue( txt.contains("Signed up as: ted"));
+        txt = Utils.fetch( "/srv/login?username=bob&password=1234" );
+        assertTrue( txt.contains("You are logged in"));
+        txt = Utils.fetch( "/srv/login?username=ted&password=4321" );
+        assertTrue( txt.contains("You are already logged in as: bob"));
+    }
+    
+    @Test
+    public void testLoginNoUsername() throws Exception{
+        String txt = Utils.fetch( "/srv/login?password=1234");
+        assertTrue( txt.contains("Missing login parameter"));
     }
     
     @Test
@@ -67,9 +80,9 @@ public class LoginNGTest {
     }
     
     @Test
-    public void testWhoLoggedIn() throws Exception{
-        String txt = Utils.fetch(  "/srv/login?user=bob", "/srv/who" ) ;
-        assertTrue( txt.contains("You are bob"));
+    public void testLoginNoPassword() throws Exception{
+        String txt = Utils.fetch( "/srv/login?username=bob" );
+        assertTrue(txt.contains("Missing login parameter"));
     }
     
 }
