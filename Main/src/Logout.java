@@ -18,6 +18,12 @@ public class Logout extends HttpServlet
         sess = req.getSession();
         var pw = resp.getWriter();
         var username = req.getParameter("username");
+        
+        if (username == null) {
+            pw.printf("Bad username");
+            return;
+        }
+        
         var logged_in = (String) sess.getAttribute("logged_in_user");
         
         if (username.equals(logged_in))
@@ -27,7 +33,7 @@ public class Logout extends HttpServlet
         }
         else
         {
-            pw.printf("You are not logged in :(");
+            pw.printf("You are not logged in");
         }
     }
 

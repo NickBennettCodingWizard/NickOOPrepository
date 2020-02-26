@@ -17,9 +17,18 @@ public class signup extends HttpServlet
         resp.setContentType("text/plain");
         var pw = resp.getWriter();
         
-        usernames.add(req.getParameter("username"));
-        passwords.add(req.getParameter("password"));
-        names.add(req.getParameter("name"));
+        var username = req.getParameter("username");
+        var password = req.getParameter("password");
+        var name = req.getParameter("name");
+        
+        if (username == null || password == null || name == null) {
+            pw.printf("Bad parameter given");
+            return;
+        }
+        
+        usernames.add(username);
+        passwords.add(password);
+        names.add(name);
         
         if( usernames.get(num_users) == null ){
             pw.printf("No username provided");

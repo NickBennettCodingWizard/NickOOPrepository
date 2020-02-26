@@ -48,7 +48,7 @@ public class LoginNGTest {
     }
     
     @Test
-    public void testLogin1() throws Exception{
+    public void testLogingIn() throws Exception{
         String txt = Utils.fetch( "/srv/signup?username=bob&password=1234&name=bill" );
         assertTrue( txt.contains("Signed up as: bob"));
         txt = Utils.fetch( "/srv/login?username=bob&password=1234" );
@@ -85,4 +85,9 @@ public class LoginNGTest {
         assertTrue(txt.contains("Missing login parameter"));
     }
     
+    @Test
+    public void testNoParameters() throws Exception{
+        String txt = Utils.fetch( "/srv/login?" );
+        assertTrue(txt.contains("Missing login parameter"));
+    }
 }
