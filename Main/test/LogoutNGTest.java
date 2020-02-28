@@ -66,5 +66,14 @@ public class LogoutNGTest {
         assertTrue( txt.contains("Bad username"));
     }
     
-    
+    @Test
+    public void testLogoutAsADiffUser() throws Exception{
+        String txt = Utils.fetch( "/srv/signup?username=bob&password=1234&name=bill" );
+        assertTrue( txt.contains("Signed up as: bob"));
+        String txt2 = Utils.fetch( "/srv/signup?username=JellyLord&password=7145&name=Dion" );
+        assertTrue( txt2.contains("Signed up as: JellyLord"));
+        Utils.fetch( "/srv/login?username=bob&password=1234" );
+        txt2 = Utils.fetch( "/srv/logout?username=JellyLord" );
+        assertTrue( txt2.contains("You are not logged in"));
+    }
 }
